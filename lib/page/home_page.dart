@@ -9,6 +9,13 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.black,
+        child: Icon(Icons.share),
+        onPressed: () {
+          print('Pressed');
+        },
+      ),
       body: SafeArea(
         child: SizedBox(
           width: MediaQuery.of(context).size.width,
