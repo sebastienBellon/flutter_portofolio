@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
 
 class ProjectCard extends StatelessWidget {
-  const ProjectCard({Key? key}) : super(key: key);
+  final String name;
+  final int year;
+  final String imageUrl;
+  final String description;
+  const ProjectCard(
+      {Key? key,
+      required this.name,
+      required this.year,
+      required this.imageUrl,
+      required this.description})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +35,9 @@ class ProjectCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                'My Project',
-                style: TextStyle(fontSize: 18.0),
+              Text(
+                name,
+                style: const TextStyle(fontSize: 18.0),
               ),
               Container(
                 decoration: BoxDecoration(
@@ -35,9 +45,9 @@ class ProjectCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15.0),
                 ),
                 padding: const EdgeInsets.all(5.0),
-                child: const Text(
-                  '2022',
-                  style: TextStyle(color: Colors.white, fontSize: 14.0),
+                child: Text(
+                  year.toString(),
+                  style: const TextStyle(color: Colors.white, fontSize: 14.0),
                 ),
               )
             ],
@@ -47,7 +57,7 @@ class ProjectCard extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(15.0),
               child: Image.network(
-                'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
+                imageUrl,
                 fit: BoxFit.cover,
               ),
             ),
@@ -55,11 +65,10 @@ class ProjectCard extends StatelessWidget {
           const SizedBox(
             height: 10.0,
           ),
-          const Text(
-            """Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime sint commodi repudiandae consequuntur voluptatum laborum
-            numquam blanditiis harum""",
+          Text(
+            description,
             maxLines: 3,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 14.0,
               overflow: TextOverflow.ellipsis,
             ),
