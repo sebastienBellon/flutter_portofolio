@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portofolio/example/projects.dart';
 import 'package:portofolio/widgets/header/header.dart';
 import 'package:portofolio/widgets/project_card/project_card.dart';
 
@@ -30,46 +31,12 @@ class HomePage extends StatelessWidget {
                   const SizedBox(height: 10),
                   SizedBox(
                     height: 350,
-                    child: ListView(
+                    child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      children: const [
-                        ProjectCard(
-                          name: 'My Project',
-                          year: 2022,
-                          imageUrl:
-                              'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-                          description:
-                              """Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime sint commodi repudiandae consequuntur voluptatum laborum
-                                numquam blanditiis harum""",
-                        ),
-                        ProjectCard(
-                          name: 'My Project',
-                          year: 2022,
-                          imageUrl:
-                              'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-                          description:
-                              """Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime sint commodi repudiandae consequuntur voluptatum laborum
-                                numquam blanditiis harum""",
-                        ),
-                        ProjectCard(
-                          name: 'My Project',
-                          year: 2022,
-                          imageUrl:
-                              'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-                          description:
-                              """Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime sint commodi repudiandae consequuntur voluptatum laborum
-                                numquam blanditiis harum""",
-                        ),
-                        ProjectCard(
-                          name: 'My Project',
-                          year: 2022,
-                          imageUrl:
-                              'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-                          description:
-                              """Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime sint commodi repudiandae consequuntur voluptatum laborum
-                                numquam blanditiis harum""",
-                        ),
-                      ],
+                      itemCount: projects.length,
+                      itemBuilder: (context, index) {
+                        return ProjectCard(project: projects[index]);
+                      },
                     ),
                   ),
                 ],
