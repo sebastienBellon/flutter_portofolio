@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.black,
-        child: Icon(Icons.share),
+        child: const Icon(Icons.share),
         onPressed: () {
           print('Pressed');
         },
