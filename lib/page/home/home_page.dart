@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portofolio/responsive.dart';
 import 'package:portofolio/widgets/header/header.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../../example/projects.dart';
 import '../../widgets/project_card/project_card.dart';
@@ -15,7 +16,8 @@ class HomePage extends StatelessWidget {
         backgroundColor: Colors.black,
         child: const Icon(Icons.share),
         onPressed: () {
-          print('Pressed');
+          Share.share(
+              'Check out my portfolio https://my-portofolio-91580.web.app/#/');
         },
       ),
       body: SafeArea(
