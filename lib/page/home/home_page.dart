@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:portofolio/example/projects.dart';
+import 'package:portofolio/responsive.dart';
 import 'package:portofolio/widgets/header/header.dart';
-import 'package:portofolio/widgets/project_card/project_card.dart';
+
+import '../../example/projects.dart';
+import '../../widgets/project_card/project_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -36,15 +38,10 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  SizedBox(
-                    height: 350,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: projects.length,
-                      itemBuilder: (context, index) {
-                        return ProjectCard(project: projects[index]);
-                      },
-                    ),
+                  Responsive(
+                    desktop: desktopBuilder(),
+                    tablet: mobileTabletBuilder(450),
+                    mobile: mobileTabletBuilder(350),
                   ),
                 ],
               ),
@@ -52,6 +49,34 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Widget mobileTabletBuilder(double height) {
+    return SizedBox(
+      height: height,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: projects.length,
+        itemBuilder: (context, index) {
+          return ProjectCard(project: projects[index]);
+        },
+      ),
+    );
+  }
+
+  Widget desktopBuilder() {
+    return GridView.builder(
+      shrinkWrap: true,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+        crossAxisSpacing: 5.0,
+        mainAxisSpacing: 5.0,
+      ),
+      itemCount: projects.length,
+      itemBuilder: (BuildContext context, int index) {
+        return ProjectCard(project: projects[index]);
+      },
     );
   }
 }

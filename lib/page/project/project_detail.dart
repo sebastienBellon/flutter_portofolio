@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'package:portofolio/models/project.dart';
 
+import '../../responsive.dart';
+
 class ProjectDetail extends StatelessWidget {
   final Project project;
   const ProjectDetail({Key? key, required this.project}) : super(key: key);
@@ -54,9 +56,22 @@ class ProjectDetail extends StatelessWidget {
                     tag: project.name,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(15.0),
-                      child: Image.network(
-                        project.imageUrl,
-                        fit: BoxFit.cover,
+                      child: Responsive(
+                        mobile: Image.network(
+                          project.imageUrl,
+                          fit: BoxFit.cover,
+                        ),
+                        tablet: Image.network(
+                          project.imageUrl,
+                          fit: BoxFit.cover,
+                        ),
+                        desktop: SizedBox(
+                          height: 350,
+                          child: Image.network(
+                            project.imageUrl,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
                     ),
                   ),
