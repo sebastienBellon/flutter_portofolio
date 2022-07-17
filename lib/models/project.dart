@@ -4,11 +4,13 @@ class Project {
   int year;
   String imageUrl;
   String description;
-  
+  List<String>? technologiesUsed;
+
   Project({
     required this.name,
     required this.year,
     required this.imageUrl,
     required this.description,
+    this.technologiesUsed,
   });
 }
